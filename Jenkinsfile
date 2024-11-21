@@ -24,7 +24,7 @@ pipeline {
                 sh '''
                     docker stop temp_container
                     docker rm temp_container
-                    docker build -t magarp0723/2244_ica2 .
+                    docker build -t jinitus/2244_ica2 .
                     docker run -d -p 8081:80 --name temp_container
 
 
@@ -39,9 +39,9 @@ magarp0723/2244_ica2
                 echo 'Building..'
                     withCredentials([usernamePassword(credentialsId: 'dockerHub_auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])  {
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh "docker tag magarp0723/2244_ica2
+                        sh "docker tag jinitus/2244_ica2
 magarp0723/2244_ica2:${TAG_DYNAMIC}"
-                        sh "docker push magarp0723/2244_ica2:${TAG_DYNAMIC}"
+                        sh "docker push jinitus/2244_ica2:${TAG_DYNAMIC}"
                     }
             }
         }
