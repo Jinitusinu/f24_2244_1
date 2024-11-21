@@ -37,10 +37,7 @@ magarp0723/2244_ica2
         stage('Build and Push') {
             steps {
                 echo 'Building..'
-
-                    withCredentials([usernamePassword(credentialsId:
-'dockerhub-auth', passwordVariable: 'PASSWORD',
-usernameVariable: 'USERNAME')]) {
+                    withCredentials([usernamePassword(credentialsId: 'dockerHub_auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])  {
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                         sh "docker tag magarp0723/2244_ica2
 magarp0723/2244_ica2:${TAG_DYNAMIC}"
