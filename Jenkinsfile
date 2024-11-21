@@ -38,7 +38,7 @@ magarp0723/2244_ica2
             steps {
                 echo 'Building..'
                     withCredentials([usernamePassword(credentialsId:
-'dockerhub-credentials', passwordVariable: 'PASSWORD',
+'dockerHub_auth', passwordVariable: 'PASSWORD',
 usernameVariable: 'USERNAME')]) {
                         sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                         sh "docker tag magarp0723/2244_ica2
